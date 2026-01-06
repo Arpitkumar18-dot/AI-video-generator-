@@ -1,0 +1,5 @@
+flask
+gtts
+moviepy
+imageio
+imageio-ffmpeg
