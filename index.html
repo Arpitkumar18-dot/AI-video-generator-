@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Video Generator</title>
+</head>
+<body>
+
+<h2>Text to Video Generator</h2>
+
+<form method="POST">
+  <textarea name="text" rows="5" cols="40"
+    placeholder="Type your script here..." required></textarea><br><br>
+  <button type="submit">Generate Video</button>
+</form>
+
+{% if video_ready %}
+  <h3>Video Ready</h3>
+  <video width="320" controls>
+    <source src="/static/output.mp4" type="video/mp4">
+  </video><br><br>
+  <a href="/download">Download Video</a>
+{% endif %}
+
+</body>
+  </html>
