@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, send_file
 from gtts import gTTS
-from moviepy.editor import *
-import os, time
+from moviepy.editor import ImageClip, AudioFileClip
+import os
 
 app = Flask(__name__)
 
@@ -14,12 +14,12 @@ def index():
 
         os.makedirs("static", exist_ok=True)
 
-        # text → voice
+        # text -> voice
         tts = gTTS(text)
         audio_path = "static/voice.mp3"
         tts.save(audio_path)
 
-        # simple image → video (temporary)
+        # image -> video
         clip = ImageClip("static/static.jpg").set_duration(5)
         audio = AudioFileClip(audio_path)
         final = clip.set_audio(audio)
@@ -40,4 +40,4 @@ def download():
     return send_file("static/output.mp4", as_attachment=True)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    app.run(debug=True)
