@@ -20,7 +20,7 @@ def index():
         tts.save(audio_path)
 
         # simple image → video (temporary)
-        clip = ImageClip("static/sample.png").set_duration(5)
+        clip = ImageClip("static.jpg).set_duration(5)
         audio = AudioFileClip(audio_path)
         final = clip.set_audio(audio)
 
